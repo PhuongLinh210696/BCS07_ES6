@@ -1,8 +1,10 @@
+import Person from "../model/Person.js";
+
 export default class Customer extends Person{
-    constructor(id,name,email,address,tenCongTy,triGiaHoaDon,danhGia){
-        super(id,name,email,address);
-        this.tenCongTy = tenCongTy;
-        this.triGiaHoaDon = triGiaHoaDon;
-        this.danhGia = danhGia;
-    }
+    constructor(name, address, id, email, companyName, orderValue, rating) {
+        super(name, address, id, email);
+        this.companyName = companyName;
+        this.orderValue = orderValue;
+        this.rating = rating;
+      }
 }

@@ -1,8 +1,13 @@
+import Person from "../model/Person.js";
+
 export default class Employee extends Person{
-    constructor(id,name,email,address,soNgayLam,luongTheoNgay){
-        super(id,name,email,address);
-        this.soNgayLam = soNgayLam;
-        this.luongTheoNgay = luongTheoNgay;
-    }
+    constructor(name, address, id, email, workDays, dailySalary) {
+        super(name, address, id, email);
+        this.workDays = workDays;
+        this.dailySalary = dailySalary;
+      }
+    tinhLuong = () => { 
+        return (this.workDays*1)*(this.dailySalary*1);
+     };
 }
 

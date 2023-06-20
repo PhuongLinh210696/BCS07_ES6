@@ -5,92 +5,155 @@
  * 
  */
 
+import Employee from "./Employee.js";
 import Student from "./Student.js";
-
+import Customer from "./Customer.js";
 
 export default class ListPerson{
-    constructor(){
-        this.arrListPerSon = [];
+  constructor() {
+    this.persons = [];
+  }
+
+  addPerson(person) {
+    this.persons.push(person);
+  }
+
+  removePerson(person) {
+    const index = this.persons.indexOf(person);
+    if (index !== -1) {
+      this.persons.splice(index, 1);
     }
-  
-    addStudent(student){
-        this.arrListPerSon.push(student);
+  }
+
+  renderPerson() {
+    let output = "";
+
+    for (const person of this.persons) {
+      let output = 
+      `<tr>
+                <td>${person.id}</td>
+                <td>${person.name}</td>
+                <td>${person.email}</td>
+                <td>${person.address}</td>
+      `;
+
+      if (person instanceof Student) {
+        output += `
+          <td>${person.tinhDiemTrungBinh()}</td>
+          <td>
+          <button class="btn btn-danger" onclick="xoaMonAn('${person.id}')">Xoá</button>
+          <button class="btn btn-warning" onclick="layThongTinMonAn('${person.id}')">Sửa</button>
+          </td>
+          </tr>
+        `;
+      } 
+      else if (person instanceof Employee) {
+        output += `
+          <td>${person.tinhLuong()}</td>
+          <td>
+          <button class="btn btn-danger" onclick="xoaMonAn('${person.id}')">Xoá</button>
+          <button class="btn btn-warning" onclick="layThongTinMonAn('${person.id}')">Sửa</button>
+          </td>
+          </tr>
+        `;
+      } 
+      // else if (person instanceof Customer) {
+      //   personInfo += `
+      //     Company Name: ${person.companyName}
+      //     Order Value: ${person.orderValue}
+      //     Rating: ${person.rating}
+      //   `;
+      // }
+
+      // output += `${personInfo}\n---------------------------\n`;
+      document.getElementById('tbodyPerson').innerHTML = output;
     }
 
-    luuLocal(){
-        localStorage.setItem('arrListPerSon',JSON.stringify(this.arrListPerSon));
+    console.log(output);
+  }
+  luuLocal(){
+    localStorage.setItem('listPerson', JSON.stringify(this.persons));
+  }
+  layLocal(){
+    const storedListPerson = localStorage.getItem('listPerson');
+    if (storedListPerson) {
+      const listPerson = JSON.parse(storedListPerson);
+      // Sử dụng đối tượng listPerson
+      console.log(listPerson)
+    } else {
+      // Nếu không có dữ liệu trong localStorage
     }
+  }
+renderPersonTest(){
+    // Lấy đối tượng ListPerson từ localStorage
+const storedListPerson = localStorage.getItem('listPerson');
+const listPerson = storedListPerson ? JSON.parse(storedListPerson) : new ListPerson();
 
-    layLocal() {
-        let listPersonLocal = JSON.parse(localStorage.getItem('arrListPerSon'));
-        // kiểm tra xem có value bên dưới local hay không, nếu có mới gán giá trị vào mảng arrMenu
-        if (listPersonLocal) {
-          this.arrListPerSon = [...listPersonLocal];
-          this.renderPerson();
-        }
-      }
-      xoaPerson(idPerson) {
-        // dùng hàm findIndex để tìm vị trí của món ăn cần xoá trong mảng và sau đó dùng hàm splice để xoá
-        let index = this.arrListPerSon.findIndex((item) => item.id == idPerson);
-        if (index != -1) {
-          this.arrListPerSon.splice(index, 1);
-          this.renderPerson();
-          this.luuLocal();
-        }
-      }
-      layThongTinPerson(id) {
-        // dùng hàm find để tìm ra phần tử bên trong array
-        let person = this.arrListPerSon.find((item) => item.id == id);
-        if (person) {
-          // dom tới nút button thêm món ăn để mở modal sau đó hiển thị dữ liệu lên các input cho người chỉnh sửa
-          document.getElementById('btnThem').click();
-          let arrInput = document.querySelectorAll(
-            '#studentForm input');
-          for (let item of arrInput) {
-            // let id = item.id
-            let { id } = item;
-            // item sẽ có id là foodID , item.value = monAn.foodID
-            item.value = person[id];
-          }
-        }
-      }
-      chinhSuaPerson(student) {
-        let index = this.arrListPerSon.findIndex((item) => item.id == student.id);
-        if (index != -1) {
-          this.arrListPerSon[index] = student;
-          this.renderPerson();
-          this.luuLocal();
-          document.getElementById('btnClose').click();
-        }
-      }
-      renderPerson(){
-        let content = this.arrListPerSon.map((item,index) => { 
-            let student = new Student();
-            Object.assign(student,item);
-            console.log(student)
-            let {
-                id,
-                name,
-                email,
-                address
-            } = student;
+// Render danh sách đối tượng Student hoặc Customer vào bảng
+const table = document.getElementById('person-table');
+table.innerHTML = '';
 
-            return `
-            <tr>
-                      <td>${id}</td>
-                      <td>${name}</td>
-                      <td>${email}</td>
-                      <td>${address}</td>
-                      <td>
-                      <button class="btn btn-danger" onclick="xoaPerson('${id}')">Xoá</button>
-                      <button class="btn btn-warning" onclick="layThongTinPerson('${id}')">Sửa</button>
-                      </td>
-            </tr>
-            `;
-         });
-         document.getElementById('tbodyPerson').innerHTML = content;
-      }
+// Tạo hàng tiêu đề
+const headerRow = `
+<thead>
+  <tr class="bg-warning text-white">
+    <th>Họ tên</th>
+    <th>Địa chỉ</th>
+    <th>Mã</th>
+    <th>Email</th>
+    ${this.persons[0] instanceof Student ? '<th>Đặc tả</th><th></th>' : ''}
+    ${this.persons[0] instanceof Employee ? '<th>Đặc tả</th><th></th>' : ''}
+    ${this.persons[0] instanceof Customer ? '<th>Đặc tả</th><th></th>' : ''}
 
-      
+  </tr>
+  </thead>
+`;
+// ${listPerson.persons[0] instanceof Student ? '<th>Toán</th><th>Lý</th><th>Hóa</th><th>Điểm trung bình</th>' : ''}
+    // ${listPerson.persons[0] instanceof Customer ? '<th>Tên công ty</th><th>Trị giá hóa đơn</th><th>Đánh giá</th>' : ''}
+// Tạo hàng dữ liệu cho mỗi đối tượng
+const dataRows = this.persons.map(person => {
+  let dataRow = `
+    <tr>
+      <td>${person.name}</td>
+      <td>${person.address}</td>
+      <td>${person.id}</td>
+      <td>${person.email}</td>
+  `;
+
+  if (person instanceof Student) {
+    dataRow += `
+      <td>Điểm trung bình: ${person.tinhDiemTrungBinh()}</td>
+      <td>
+                <button class="btn btn-danger" onclick="">Xoá</button>
+                <button class="btn btn-warning" onclick="">Sửa</button>
+                </td>
+    `;
+  } else if (person instanceof Customer) {
+    dataRow += `
+      <td>Công ty: ${person.companyName},Hoá đơn: ${person.orderValue},Đánh giá ${person.rating}</td>
+      <td>
+                <button class="btn btn-danger" onclick="">Xoá</button>
+                <button class="btn btn-warning" onclick="">Sửa</button>
+                </td>
+    `;
+  }else{
+    dataRow += `
+      <td>Lương: ${person.tinhLuong()}</td>
+      <td>
+                <button class="btn btn-danger" onclick="">Xoá</button>
+                <button class="btn btn-warning" onclick="">Sửa</button>
+                </td>
+    `;
+  }
+
+  dataRow += '</tr>';
+  return dataRow;
+}).join('');
+
+// Kết hợp các hàng và hiển thị trong bảng
+const tableHTML = `${headerRow}${dataRows}`;
+table.innerHTML = tableHTML;
+
+  }
 }
 
