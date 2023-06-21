@@ -130,12 +130,13 @@ typeSelect.addEventListener("change", function () {
 
 //Khi lấy giá trị từ id các biến id phải trùng với biến contructor phải không?
 
-window.xoaPerson=(idPerson) => { 
-    listPerson.xoaPerson(idPerson);
+window.removePerson=(idPerson) => { 
+    listPerson.removePerson(idPerson);
  };
 
  window.layThongTinPerson=(idPerson) => { 
     listPerson.layThongTinPerson(idPerson);
+    
   }
 
   document.getElementById('btnCapNhat').onclick = () => {
