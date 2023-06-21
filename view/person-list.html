@@ -174,178 +174,80 @@
         </div>
         <div class="modal-body">
           <form id="personForm">
-            <label for="typeSelect">Type:</label>
-            <select id="loai" name="loai">
-              <option value=""></option>
-              <option value="student">Student</option>
-              <option value="employee">Employee</option>
-              <option value="customer">Customer</option>
-            </select>
-            <br>
-            <label for="nameInput">Name:</label>
-            <input type="text" id="nameInput" name="name">
-            <br>
-            <label for="addressInput">Address:</label>
-            <input type="text" id="addressInput" name="address">
-            <br>
-            <label for="idInput">Id:</label>
-            <input type="text" id="idInput" name="code">
-            <br>
-            <label for="emailInput">Email:</label>
-            <input type="text" id="emailInput" name="email">
-            <br>
-            <div id="studentFields" style="display: none;">
-              <label for="mathInput">Math Grade:</label>
-              <input type="text" id="mathInput" name="math">
-              <br>
-              <label for="physicsInput">Physics Grade:</label>
-              <input type="text" id="physicsInput" name="physics">
-              <br>
-              <label for="chemistryInput">Chemistry Grade:</label>
-              <input type="text" id="chemistryInput" name="chemistry">
-              <br>
-            </div>
-            <div id="employeeFields" style="display: none;">
-              <label for="workDaysInput">Work Days:</label>
-              <input type="text" id="workDaysInput" name="workDays">
-              <br>
-              <label for="dailySalaryInput">Daily Salary:</label>
-              <input type="text" id="dailySalaryInput" name="dailySalary">
-              <br>
-            </div>
-            <div id="customerFields" style="display: none;">
-              <label for="companyNameInput">Company Name:</label>
-              <input type="text" id="companyNameInput" name="companyName">
-              <br>
-              <label for="orderValueInput">Order Value:</label>
-              <input type="text" id="orderValueInput" name="orderValue">
-              <br>
-              <label for="ratingInput">Rating:</label>
-              <input type="text" id="ratingInput" name="rating">
-              <br>
-            </div>
-            <br>
-            <button type="submit">Add Person</button>
-          </form>
-          <!-- <form class="needs-validation" id="personForm">
             <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="typeSelect">Type:</label>
+                <select class="custom-select d-block w-100" id="loai" name="loai">
+                  <option value=""></option>
+                  <option value="student">Student</option>
+                  <option value="employee">Employee</option>
+                  <option value="customer">Customer</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="nameInput">Name:</label>
+                <input class="form-control" type="text" id="nameInput" name="name">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="addressInput">Address:</label>
+                <input class="form-control" type="text" id="addressInput" name="address">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="idInput">Id:</label>
+                <input class="form-control" type="text" id="idInput" name="code">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="emailInput">Email:</label>
+              <input class="form-control" type="text" id="emailInput" name="email">
+              </div>
+              <div  id="studentFields" style="display: none;">
                 <div class="col-md-6 mb-3">
-                    <label for="id">ID</label>
-                    <input type="text" class="form-control" id="id" placeholder="Nhập ID"
-                        value="" required>
-                    <div id="invalidID" class="invalid-feedback">
-                    </div>
+                  <label for="mathInput">Math Grade:</label>
+                  <input class="form-control" type="text" id="mathInput" name="math">
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="name">Họ Tên</label>
-                    <input type="text" class="form-control" id="name"
-                        placeholder="Nhập họ tên" required>
-                    <div id="invalidTen" class="invalid-form">
-                    </div>
+                  <label for="physicsInput">Physics Grade:</label>
+                  <input class="form-control" type="text" id="physicsInput" name="physics">
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" placeholder="Nhập Email"
-                        value="" required>
-                    <div id="invalidGia" class="invalid-feedback">
-                    </div>
+                  <label for="chemistryInput">Chemistry Grade:</label>
+                  <input class="form-control" type="text" id="chemistryInput" name="chemistry">
+                </div>
+              </div>
+              <div id="employeeFields" style="display: none;">
+                <div class="col-md-6 mb-3">
+                  <label for="workDaysInput">Work Days:</label>
+                  <input class="form-control" type="text" id="workDaysInput" name="workDays">
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="address">Địa chỉ</label>
-                    <input type="text" class="form-control" id="address" placeholder="Nhập Address"
-                        value="" required>
-                    <div id="invalidGia" class="invalid-feedback">
-                    </div>
+                  <label for="dailySalaryInput">Daily Salary:</label>
+                  <input class="form-control" type="text" id="dailySalaryInput" name="dailySalary">
+                </div>
+              </div>
+              <div id="customerFields" style="display: none;">
+                <div class="col-md-6 mb-3">
+                  <label for="companyNameInput">Company Name:</label>
+                  <input class="form-control" type="text" id="companyNameInput" name="companyName">
                 </div>
                 <div class="col-md-6 mb-3">
-                  <label for="loai">Loại </label>
-                  <select class="custom-select d-block w-100" id="loai" required="" >
-                    <option value="">Chọn</option>
-                    <option value="student">Student</option>
-                    <option value="employee">Employee</option>
-                    <option value="customer">Customer</option>
-                  </select>
-                  <div id="invalidLoai" class="invalid-feedback">
-                  </div>
+                  <label for="orderValueInput">Order Value:</label>
+                  <input class="form-control" type="text" id="orderValueInput" name="orderValue">
                 </div>
-                
-                <div style="display: none;" id="studentFields">
-                  <div class="col-md-6 mb-3" >
-                    <label for="math">Toán</label>
-                    <input type="text" class="form-control" id="math" placeholder="Nhập điểm toán"
-                        value="" required>
-                    <div id="invalidGia" class="invalid-feedback">
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                      <label for="physics">Lý</label>
-                      <input type="text" class="form-control" id="physics" placeholder="Nhập điểm Lý"
-                          value="" required>
-                            <div id="invalidGia" class="invalid-feedback">
-                      </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                      <label for="chemistry">Hoá</label>
-                      <input type="text" class="form-control" id="chemistry" placeholder="Nhập điểm Hoá"
-                          value="" required>
-                      <div id="invalidGia" class="invalid-feedback">
-                      </div>
-                  </div>  
+                <div class="col-md-6 mb-3">
+                  <label for="ratingInput">Rating:</label>
+                  <input class="form-control" type="text" id="ratingInput" name="rating">
                 </div>
-                
-                
-                <div style="display: none;" id="employeeFields">
-                  <div class="col-md-6 mb-3" >
-                    <label for="workDays">Số ngày làm việc</label>
-                    <input type="text" class="form-control" id="workDays" placeholder="Nhập số ngày làm việc"
-                        value="" required>
-                    <div id="invalidGia" class="invalid-feedback">
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="dailySalary">Lương theo ngày</label>
-                    <input type="text" class="form-control" id="dailySalary" placeholder="Nhập lương một ngày"
-                        value="" required>
-                    <div id="invalidGia" class="invalid-feedback">
-                    </div>
-                  </div>
-                </div>
-                
-                
-                <div style="display: none;" id="customerFields">
-                  <div class="col-md-6 mb-3" >
-                    <label for="companyName">Công ty</label>
-                    <input type="text" class="form-control" id="companyName" placeholder="Nhập công ty"
-                        value="" required>
-                    <div id="invalidGia" class="invalid-feedback">
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3" >
-                    <label for="orderValue">Lương theo ngày</label>
-                    <input type="text" class="form-control" id="orderValue" placeholder="Nhập hóa đơn"
-                        value="" required>
-                    <div id="invalidGia" class="invalid-feedback">
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3" >
-                    <label for="rating">Lương theo ngày</label>
-                    <input type="text" class="form-control" id="rating" placeholder="Nhập đánh giá"
-                        value="" required>
-                    <div id="invalidGia" class="invalid-feedback">
-                    </div>
-                  </div>
-                </div>
-                
-            <hr class="mb-4">
-            <button type="submit" class="btn btn-warning" id="btnThemPerson">Thêm</button>
-            <button id="btnThemPerson" class="btn btn-warning btn-lg btn-block" type="button"  >Thêm Person</button> 
-        </form>-->
+              </div>
+              <br>
+              <button type="submit" class="btn btn-warning btn-lg btn-block">Add Person</button>
+            </div>
+          </form>
         </div>
-        <div class="modal-footer">
+        <!-- <div class="modal-footer">
           <button type="button" class="btn btn-secondary" id="btnClose" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-warning" id="btnCapNhat">Cập Nhật</button>
-          <button type="submit" class="btn btn-warning" id="btnThemPerson">Thêm</button>
-        </div>
+          <button type="submit" class="btn btn-warning btn-lg btn-block">Thêm</button>
+        </div> -->
       </div>
     </div>
   </div>

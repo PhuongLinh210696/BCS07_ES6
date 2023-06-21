@@ -139,62 +139,18 @@ window.removePerson=(idPerson) => {
     
   }
 
-  document.getElementById('btnCapNhat').onclick = () => {
-    // lấy dữ liệu người dùng
-    let arrInput = document.querySelectorAll(
-        '#studentForm input');
-        let student = new Student();
-        //dùng vòng lặp để lấy dữ liệu
-        for (const item of arrInput) {
-            // let id = item.id;
-            // let value = item.value;
-            let { id, value } = item;
-            student[id] = value;
-        }
-    listPerson.chinhSuaPerson(student);
+//   document.getElementById('btnCapNhat').onclick = () => {
+//     // lấy dữ liệu người dùng
+//     let arrInput = document.querySelectorAll(
+//         '#studentForm input');
+//         let student = new Student();
+//         //dùng vòng lặp để lấy dữ liệu
+//         for (const item of arrInput) {
+//             // let id = item.id;
+//             // let value = item.value;
+//             let { id, value } = item;
+//             student[id] = value;
+//         }
+//     listPerson.chinhSuaPerson(student);
+//   };
 
-  };
-
-// document.getElementById('loai').addEventListener('change',()=>{
-//     var selectList = document.getElementById('loai');
-//     var value = selectList.options[selectList.selectedIndex].value;
-//     console.log(value); 
-//     if(value == 'loai1'){
-//         document.getElementById("ngayLamViecDisplay").style.display = "none";
-//         document.getElementById("luongDisplay").style.display = "none";
-//         document.getElementById("congTyDisplay").style.display ="none";
-//         document.getElementById("hoaDonDisplay").style.display = "none";
-//         document.getElementById("danhGiaDisplay").style.display = "none";
-//         document.getElementById("toanDisplay").style.display ="inline-block";
-//         document.getElementById("lyDisplay").style.display = "inline-block";
-//         document.getElementById("hoaDisplay").style.display = "inline-block";
-//         console.log(true)
-//     }else if (value == 'loai2') {
-//         document.getElementById("toanDisplay").style.display ="none";
-//         document.getElementById("lyDisplay").style.display = "none";
-//         document.getElementById("hoaDisplay").style.display = "none";
-//         document.getElementById("congTyDisplay").style.display ="none";
-//         document.getElementById("hoaDonDisplay").style.display = "none";
-//         document.getElementById("danhGiaDisplay").style.display = "none";
-//         document.getElementById("ngayLamViecDisplay").style.display = "inline-block";
-//         document.getElementById("luongDisplay").style.display = "inline-block";
-//     } else if (value == 'loai3') {
-//         document.getElementById("toanDisplay").style.display ="none";
-//         document.getElementById("lyDisplay").style.display = "none";
-//         document.getElementById("hoaDisplay").style.display = "none";
-//         document.getElementById("ngayLamViecDisplay").style.display = "none";
-//         document.getElementById("luongDisplay").style.display = "none";
-//         document.getElementById("congTyDisplay").style.display ="inline-block";
-//         document.getElementById("hoaDonDisplay").style.display = "inline-block";
-//         document.getElementById("danhGiaDisplay").style.display = "inline-block";
-//     }else{
-//         document.getElementById("toanDisplay").style.display ="none";
-//         document.getElementById("lyDisplay").style.display = "none";
-//         document.getElementById("hoaDisplay").style.display = "none";
-//         document.getElementById("ngayLamViecDisplay").style.display = "none";
-//         document.getElementById("luongDisplay").style.display = "none";
-//         document.getElementById("congTyDisplay").style.display ="none";
-//         document.getElementById("hoaDonDisplay").style.display = "none";
-//         document.getElementById("danhGiaDisplay").style.display = "none";
-//     }
-// })
